@@ -1,0 +1,38 @@
+{
+  "name": "2048-game",
+  "version": "1.0.0",
+  "description": "2048 Game",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --progress --watch --config webpack.config.js --mode development & python3 src/app.py",
+    "dev:prod": "webpack --progress --config webpack.prod.js --mode production & python3 src/app.py",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1atharvad/2048-Game.git"
+  },
+  "author": "Atharva Devasthali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1atharvad/2048-Game/issues"
+  },
+  "homepage": "https://github.com/1atharvad/2048-Game#readme",
+  "devDependencies": {
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "css-loader": "^6.8.1",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "sass-loader": "^13.3.2",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.2.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^5.9.0"
+  },
+  "dependencies": {
+    "sass": "^1.69.0"
+  }
+}
