@@ -1,0 +1,15 @@
+// Mixin for centering the element to the centre of parent element
+@mixin flex-center($direction: row) {
+  align-items: center;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+}
+
+// Mixin for creating keyframes
+@mixin keyframes($name) {
+  @keyframes #{$name} { @content; }
+  @-o-keyframes #{$name} { @content; }
+  @-ms-keyframes #{$name} { @content; }
+  @-moz-keyframes #{$name} { @content; }
+}
