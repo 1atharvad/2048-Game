@@ -33,6 +33,7 @@ module.exports = {
     new BrowserSyncPlugin({
       proxy: 'http://127.0.0.1:8080/',
       open: false,
+      notify: false,
       files: ['src/static/**'],
     }),
   ],
