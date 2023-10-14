@@ -9,7 +9,7 @@
     "dev:prod": "webpack --progress --config webpack.prod.js --mode production & npm run run-app",
     "lint": "eslint ./src/**/**.ts",
     "run-app": "gunicorn -b localhost:8080 src.app:app",
-    "build": "webpack --progress --config webpack.prod.js --mode production & npm run run-app"
+    "build": "webpack --progress --config ./webpack.prod.js --mode production & gunicorn src.app:app"
   },
   "repository": {
     "type": "git",
