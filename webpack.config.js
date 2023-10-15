@@ -1,8 +1,7 @@
 const path = require('path');
-// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
+const config = {
   mode: 'development',
   entry: ['./src/index.ts', './src/index.scss'],
   devtool: 'inline-source-map',
@@ -30,11 +29,17 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'index.min.css',
     }),
-    // new BrowserSyncPlugin({
-    //   proxy: 'http://127.0.0.1:8080/',
-    //   open: false,
-    //   notify: false,
-    //   files: ['src/static/**'],
-    // }),
   ],
 };
+
+if (process.argv[process.argv.indexOf('--mode') + 1] === 'development') {
+  const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+  config.plugins.push(new BrowserSyncPlugin({
+    proxy: 'http://127.0.0.1:8080/',
+    open: false,
+    notify: false,
+    files: ['src/static/**'],
+  }))
+}
+
+module.exports = config;
