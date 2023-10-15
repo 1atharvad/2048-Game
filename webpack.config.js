@@ -1,6 +1,6 @@
 const path = require('path');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
@@ -30,11 +30,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'index.min.css',
     }),
-    new BrowserSyncPlugin({
-      proxy: 'http://127.0.0.1:8080/',
-      open: false,
-      notify: false,
-      files: ['src/static/**'],
-    }),
+    // new BrowserSyncPlugin({
+    //   proxy: 'http://127.0.0.1:8080/',
+    //   open: false,
+    //   notify: false,
+    //   files: ['src/static/**'],
+    // }),
   ],
 };
