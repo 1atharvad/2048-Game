@@ -9,7 +9,7 @@
     "dev:prod": "webpack --progress --config webpack.prod.js --mode production & npm run run-app",
     "lint": "eslint ./src/**/**.ts",
     "run-app": "gunicorn -b localhost:8080 src.app:app",
-    "build": "webpack --progress --config ./webpack.prod.js --mode production & gunicorn src.app:app"
+    "build": "webpack --progress --config webpack.prod.js --mode production & gunicorn src.app:app"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,6 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
-    "browser-sync-webpack-plugin": "^2.3.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.51.0",
     "eslint-config-standard-with-typescript": "^39.1.1",
@@ -33,15 +32,16 @@
     "eslint-plugin-promise": "^6.1.1",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
-    "mini-css-extract-plugin": "^2.7.6",
     "sass-loader": "^13.3.2",
     "ts-loader": "^9.4.4",
-    "typescript": "^5.2.2",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "sass": "^1.69.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-merge": "^5.9.0"
-  },
-  "dependencies": {
-    "sass": "^1.69.0"
   }
 }
