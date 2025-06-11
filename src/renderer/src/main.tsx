@@ -8,7 +8,7 @@ import { App } from './App'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>
-      <BrowserRouter basename={window.isElectronApp ? '/' : '/projects/game-2048'}>
+      <BrowserRouter basename={window.isElectronApp ? '/' : '/'}>
         <App />
       </BrowserRouter>
     </HelmetProvider>

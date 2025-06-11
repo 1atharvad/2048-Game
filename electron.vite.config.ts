@@ -10,7 +10,7 @@ export default defineConfig({
     plugins: [externalizeDepsPlugin()]
   },
   renderer: {
-    base: '/projects/game-2048/',
+    base: '/',
     resolve: {
       alias: {
         '@renderer': resolve('src/renderer/src')
