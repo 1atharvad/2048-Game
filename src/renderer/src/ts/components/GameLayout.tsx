@@ -5,6 +5,7 @@ import { DashboardNav } from "./DashboardNav";
 
 export const GameLayout = ({content}: {content: {[key: string]: any}}) => {
   const layoutRef = useRef<HTMLDivElement>(null);
+  const baseUrl = window.isElectronApp ? '' : '/';
 
   useEffect(() => {
     if (layoutRef.current) {
@@ -33,7 +34,7 @@ export const GameLayout = ({content}: {content: {[key: string]: any}}) => {
                 key={`arrow-btn-${index}`}
                 data-arrow-direction={arrow_btn.direction}>
               <svg role="presentation" aria-hidden="true" className="arrow-logo">
-                <use xlinkHref='images/icons.svg#chevron-up'/>
+                <use xlinkHref={`${baseUrl}images/icons.svg#chevron-up`}/>
               </svg>
             </button>
           ))}

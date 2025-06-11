@@ -3,6 +3,7 @@ import '../../scss/global/global-header.scss';
 
 export const Header = ({content}: {content: {[key: string]: any}}) => {
   const logo = content.header.logo;
+  const baseUrl = window.isElectronApp ? '' : '/';
 
   return (
     <header className="app-header">
@@ -10,7 +11,7 @@ export const Header = ({content}: {content: {[key: string]: any}}) => {
         <div className="header-logo">
           <Link className="header-logo-link" link={logo.link}>
             <div className="header-logo-container">
-              <img className="logo-image" src={`${logo.image.url}`} alt={logo.image.alt_text} />
+              <img className="logo-image" src={`${baseUrl}${logo.image.url}`} alt={logo.image.alt_text} />
               <span className="logo-name">{logo.name}</span>
             </div>
           </Link>
@@ -31,7 +32,7 @@ export const Header = ({content}: {content: {[key: string]: any}}) => {
                 <h3 className="title">{content.header.modal_title}</h3>
                 <button className="reverse-solid-btn close-btn" title="Close Button">
                   <svg role="presentation" aria-hidden="true" className="close-logo">
-                    <use xlinkHref='images/icons.svg#close'></use>
+                    <use xlinkHref={`${baseUrl}images/icons.svg#close`}></use>
                   </svg>  
                 </button>
               </div>
@@ -40,7 +41,7 @@ export const Header = ({content}: {content: {[key: string]: any}}) => {
                   <Link key={index} className="header-cta-link js-button" link={link}>
                     <span className="btn-text">{link.text}</span>
                     <svg role="presentation" aria-hidden="true" className="arrow-right">
-                      <use xlinkHref='images/icons.svg#chevron-up'></use>
+                      <use xlinkHref={`${baseUrl}images/icons.svg#chevron-up`}></use>
                     </svg>
                   </Link>
                 ))}
@@ -53,7 +54,7 @@ export const Header = ({content}: {content: {[key: string]: any}}) => {
         <div className="header-logo">
           <Link className="header-logo-link" link={logo.link}>
             <div className="header-logo-container">
-              <img className="logo-image" src={`${logo.image.url}`} alt={logo.image.alt_text} />
+              <img className="logo-image" src={`${baseUrl}${logo.image.url}`} alt={logo.image.alt_text} />
               <span className="logo-name">{logo.name}</span>
             </div>
           </Link>
