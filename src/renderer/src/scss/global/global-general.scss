@@ -1,0 +1,181 @@
+@use 'global-colors' as colors;
+@use 'global-mixins' as mixins;
+@use 'global-vars' as vars;
+
+.body-tag {
+  --bg-opacity: 0;
+
+  background: colors.$screen-bg-color;
+  font-family: vars.$font-heebo;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  &::after {
+    background: rgba(colors.$black, var(--bg-opacity));
+    content: '';
+    height: calc(100% - 64px);
+    position: fixed;
+    top: 64px;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &.game-2048::after {
+    background: linear-gradient(to top, rgba(colors.$black, 0), rgba(colors.$black, var(--bg-opacity)));
+    height: calc(100% - 128px);
+    position: absolute;
+    z-index: -1;
+  }
+
+  &.scroll-hidden {
+    overflow: hidden;
+
+    &:not(.game-2048)::after {
+      z-index: 0;
+    }
+  }
+}
+
+%btn-properties {
+  @include mixins.flex-center;
+
+  box-sizing: border-box;
+  cursor: pointer;
+  font: 16px/20px vars.$font-heebo;
+  height: fit-content;
+  min-height: 48px;
+  padding: 0 10px;
+  width: fit-content;
+
+  [data-game-over] & {
+    visibility: hidden;
+  }
+  
+  &:hover {
+    background: colors.$controller-hover-color;
+  }
+
+  &:focus {
+    border-width: 3px;
+    margin: 0 -1px;
+  }
+
+  .btn-logo {
+    height: 24px;
+    margin-left: 10px;
+    width: 24px;
+  }
+}
+
+.solid-btn {
+  @extend %btn-properties;
+
+  background: colors.$controller-bg-color;
+  border: 2px solid colors.$controller-color;
+  border-radius: 5px;
+  color: colors.$controller-color;
+}
+
+.reverse-solid-btn {
+  @extend %btn-properties;
+
+  background: transparent;
+  border: 0;
+  color: colors.$controller-color;
+  cursor: pointer;
+
+  &:hover {
+    background: none;
+  }
+
+  .btn-logo {
+    fill: colors.$controller-color;
+  }
+}
+
+.primary-btn {
+  @extend %btn-properties;
+
+  background: #e2bc5d;
+  border: 2px solid #6f4206;
+  border-radius: 30px;
+  color: #6f4206;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  text-decoration: none;
+
+  &:hover {
+    background: #f5cc66;
+  }
+
+  .btn-logo {
+    fill: #6f4206;
+  }
+}
+
+.reverse-primary-btn {
+  @extend %btn-properties;
+
+  background: transparent;
+  border: 2px solid #6f4206;
+  border-radius: 30px;
+  color: #6f4206;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  text-decoration: none;
+
+  &:hover {
+    background: rgba(colors.$black, 0.1);
+  }
+
+  .btn-logo {
+    fill: #6f4206;
+  }
+}
+
+.hamburger-btn {
+  height: 48px;
+  width: 48px;
+
+  &:focus {
+    margin: 0;
+  }
+
+  .hamburger-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+
+    .line {
+      background: var(--line-color, colors.$black);
+      border-radius: 2px;
+      height: 3.5px;
+      margin: 3px 0;
+      width: 21px;
+    }
+  }
+}
+
+.js-section,
+.js-modal-section {
+  .image-wrapper {
+    display: grid;
+    grid: "image-sizer";
+  }
+
+  .image-sizer {
+    grid-area: image-sizer;
+    height: 0;
+    padding-bottom: var(--default-height, 100%);
+  }
+
+  .image-frame {
+    grid-area: image-sizer;
+  }
+}

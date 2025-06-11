@@ -1,14 +1,4 @@
 {
-  "compilerOptions": {
-    "outDir": "./src/",
-    "noImplicitAny": true,
-    "module": "CommonJS",
-    "target": "es6",
-    "sourceMap": false,
-    "allowJs": true,
-    "moduleResolution": "node"
-  },
-  "exclude": [
-    "node_modules"
-  ]
+  "files": [],
+  "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.web.json" }]
 }

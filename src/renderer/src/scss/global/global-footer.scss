@@ -1,0 +1,33 @@
+@use 'global-colors' as colors;
+@use 'global-mixins' as mixins;
+
+.app-footer {
+  position: relative;
+
+  .footer {
+    background: #9e8441;
+    bottom: 0;
+    text-align: center;
+    width: 100vw;
+
+    .game-2048 & {
+      background: rgba(colors.$footer-bk-color, 0.5);
+      color: colors.$main-title-color;
+      display: none;
+      position: fixed;
+
+      @include mixins.bp(md) {
+        @include mixins.bp-height(ml) {
+          display: block;
+        }
+      }
+    }
+
+    &-text {
+      color: #081f3a;
+      font-size: 14px;
+      margin: 0;
+      padding: 10px;
+    }
+  }
+}

@@ -1,4 +1,6 @@
-__pycache__
 node_modules
-**/index.min.**
-**/**.pyc
+dist
+out
+.DS_Store
+.eslintcache
+*.log*

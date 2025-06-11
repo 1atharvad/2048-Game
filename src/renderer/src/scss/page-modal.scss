@@ -1,0 +1,133 @@
+@use './global/global-colors' as colors;
+@use './global/global-mixins' as mixins;
+@use './global/global-vars' as vars;
+
+.page-modal {
+  --opacity: 1, 1;
+  --scale: 1, 1;
+  --translateX: -50%, 50%;
+  --translateY: 0, 0;
+
+  background: var(--modal-bk-color, colors.$white);
+  height: calc(100% - 64px);
+  overflow-y: auto;
+  position: absolute;
+  right: 50%;
+  top: 64px;
+  width: 100%;
+  z-index: 1000;
+
+  @include mixins.bp-height(ml) {
+    @include mixins.bp(md) {
+      transform: translateY(0);
+    }
+
+    @include mixins.bp(tab) {
+      height: 100%;
+      top: 0;
+    }
+
+    @include mixins.bp(lg) {
+      --opacity: 0, 1;
+      --scale: 0.5, 1;
+      --translateX: 50%, 50%;
+      --translateY: -50%, -50%;
+
+      border: 2px solid colors.$controller-color;
+      border-radius: 10px;
+      filter: brightness(0.96);
+      height: 75vh;
+      max-width: 984px;
+      top: 50%;
+
+      &.full-page-modal {
+        --opacity: 1, 1;
+        --scale: 1, 1;
+        --translateX: 100%, 0;
+        --translateY: 0, 0;
+
+        border-radius: 0;
+        height: 100%;
+        max-width: min(75vw, 1023px);
+      }
+    }
+  }
+
+  &.hide-modal {
+    display: none;
+  }
+
+  &.modal-open {
+    max-width: 1024px;
+
+    @include mixins.bp(lg) {
+      @include mixins.bp-height(ml) {
+        max-width: 984px;
+        top: 50%;
+
+        &.full-page-modal {
+          max-width: min(75vw, 1023px);
+          top: 0;
+        }
+      }
+    }
+  }
+
+  &.fixed-page-modal {
+    position: fixed;
+    top: 64px;
+    transform: none;
+
+    @include mixins.bp-height(ml) {
+      @include mixins.bp(lg) {
+        top: 50%;
+      }
+    }
+  }
+
+  &.full-page-modal {
+    --opacity: 1, 1;
+    --scale: 1, 1;
+    --translateX: 100%, 0;
+    --translateY: 0, 0;
+
+    border: 0;
+    position: fixed;
+    right: 0;
+    top: 64px;
+    transform: none;
+
+    @include mixins.bp-height(ml) {
+      @include mixins.bp(tab) {
+        top: 0;
+      }
+    }
+  }
+
+  .modal-content {
+    margin: 20px;
+
+    .modal-header {
+      @include mixins.flex-center($justify-content: space-between, $align-items: flex-start);
+
+      column-gap: 15px;
+  
+      .title {
+        color: colors.$main-title-color;
+        font-size: 36px;
+        line-height: 48px;
+        margin: 0;
+      }
+  
+      .close-btn {
+        padding: 0 6px;
+  
+        .close-logo {
+          fill: colors.$controller-color;
+          height: 32px;
+          width: 32px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+@use 'sass:string';
+@use './global/global-colors' as colors;
+@use './global/global-mixins' as mixins;
+@use './global/global-vars' as vars;
+
+@each $tile-num, $bg-color in colors.$tiles {
+  .tile-#{$tile-num} {
+    &::after {
+      @include mixins.flex-center;
+      
+      background: $bg-color;
+      border-radius: 5px;
+      content: $tile-num;
+      font-weight: 900;
+      height: var(--box-side);
+      position: absolute;
+      width: var(--box-side);
+
+      @if $tile-num == "2" or $tile-num == "4" {
+        color: colors.$box-font-color1;
+      } @else {
+        color: colors.$box-font-color2;
+      }
+
+      @if string.length($tile-num) == 1 {
+        font-size: 36px;
+
+        @include mixins.bp(sm) {
+          font-size: 42px;
+        }
+
+        @include mixins.bp(ml) {
+          @include mixins.bp-height(ml) {
+            font-size: 50px;
+          }
+        }
+      } @else if string.length($tile-num) == 2 {
+        font-size: 32px;
+
+        @include mixins.bp(sm) {
+          font-size: 38px;
+        }
+
+        @include mixins.bp(ml) {
+          @include mixins.bp-height(ml) {
+            font-size: 42px;
+          }
+        }
+      } @else if string.length($tile-num) == 3 {
+        font-size: 28px;
+
+        @include mixins.bp(ml) {
+          @include mixins.bp-height(ml) {
+            font-size: 38px;
+          }
+        }
+      } @else if string.length($tile-num) == 4 {
+        font-size: 24px;
+
+        @include mixins.bp(ml) {
+          @include mixins.bp-height(ml) {
+            font-size: 34px;
+          }
+        }
+      }
+    }
+
+    &.tile-updated {
+      animation: createBox .25s;
+    }
+  }
+}
+
+@include mixins.keyframes(createBox) {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,79 @@
+@use 'sass:list';
+
+@mixin bp($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: 376px) { @content; }
+  } @else if $breakpoint == ml {
+    @media (min-width: 426px) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: 600px) { @content; }
+  } @else if $breakpoint == tab {
+    @media (min-width: 769px) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: 1024px) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: 1440px) { @content; }
+  }
+}
+
+@mixin bp-height($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-height: 350px) { @content; }
+  } @else if $breakpoint == ml {
+    @media (min-height: 650px) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-height: 750px) { @content; }
+  } @else if $breakpoint == mx {
+    @media (min-height: 850px) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-height: 1024px) { @content; }
+  }
+}
+
+// Mixin for centering the element to the centre of parent element
+@mixin flex-center($direction: row, $justify-content: center, $align-items: center) {
+  align-items: $align-items;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+}
+
+// Mixin for creating keyframes
+@mixin keyframes($name) {
+  @keyframes #{$name} { @content; }
+}
+
+@mixin fade-out-animation() {
+  $start-points: 0, 25, 50, 75;
+  $end-points: 0, 100;
+
+  @each $point in $start-points {
+    $keyframe-pos: $point, $point + 2, $point + 18, $point + 24;
+    $index: list.index($start-points, $point);
+
+    @include keyframes(fade-out-type#{$index}) {
+      #{list.nth($keyframe-pos, 1)}% {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+
+      #{list.nth($keyframe-pos, 2)}%, #{list.nth($keyframe-pos, 3)}% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      #{list.nth($keyframe-pos, 4)}% {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+
+      @each $end-point in $end-points {
+        @if not list.index($keyframe-pos, $end-point) {
+          #{$end-point}% {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+}
