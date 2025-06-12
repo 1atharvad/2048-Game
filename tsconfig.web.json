@@ -7,6 +7,8 @@
     "src/preload/*.d.ts"
   ],
   "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
     "composite": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
