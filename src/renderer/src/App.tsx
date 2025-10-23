@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import './App.scss';
+import './scss/page-skeleton.scss';
 import { API_BASE_URL } from "./ts/config";
 import { GameLayout } from './ts/components/GameLayout';
 import { Header } from './ts/partials/Header';
 import { Footer } from './ts/partials/Footer';
 import { Helmet } from 'react-helmet-async';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export const App = () => {
   const [loading, setLoading] = useState(true);
@@ -23,7 +26,7 @@ export const App = () => {
 
   return (
     <>
-      {!loading && (
+      {!loading ? (
         <>
           <Helmet>
             <title>{content.meta_details.title}</title>
@@ -45,10 +48,21 @@ export const App = () => {
 
             <link href={`${globalContent.site_url}/projects/game-2048/`} rel="canonical"/>
           </Helmet>
+
           <Header content={content} />
           <GameLayout content={content} />
           <Footer content={content} />
         </>
+      ) : (
+        <SkeletonTheme baseColor="#cacaca" highlightColor="#b0b0b0">
+          <div className='page-skeleton'>
+            <Skeleton className="header-skeleton"/>
+            <div>
+              <Skeleton className="game-board-skeleton"/>
+            </div>
+            <Skeleton className="footer-skeleton"/>
+          </div>
+        </SkeletonTheme>
       )}
     </>
   )

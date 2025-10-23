@@ -6,7 +6,7 @@ export default defineConfig({
   base: '/',
   plugins: [react()],
   build: {
-    outDir: '../../dist',
+    outDir: '../../dist/projects/game-2048',
     emptyOutDir: true,
   },
 })

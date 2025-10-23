@@ -1,0 +1,29 @@
+.page-skeleton {
+  height: 100vh;
+  position: relative;
+
+  .header-skeleton {
+    border-radius: 0;
+    height: 64px;
+    line-height: normal;
+  }
+
+  .game-board-skeleton {
+    height: calc(min(100vw, 100vh) - 40px);
+    left: 50%;
+    max-height: 500px;
+    max-width: 500px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(min(100vw, 100vh) - 40px);
+  }
+
+  .footer-skeleton {
+    border-radius: 0;
+    bottom: 0;
+    height: 40px;
+    line-height: normal;
+    position: absolute;
+  }
+}
