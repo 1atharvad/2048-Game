@@ -10,7 +10,6 @@ export const MenuModal = ({
   footer: {[key: string]: any}
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
-  const baseUrl = window.isElectronApp ? '' : '/';
 
   useEffect(() => {
     if (modalRef.current instanceof HTMLElement) {
@@ -37,7 +36,7 @@ export const MenuModal = ({
             <h3 className="title">2048</h3>
             <button className="reverse-solid-btn close-btn" title="Close Button">
               <svg role="presentation" aria-hidden="true" className="close-logo">
-                <use xlinkHref={`${baseUrl}images/icons.svg#close`}></use>
+                <use xlinkHref={'images/icons.svg#close'}></use>
               </svg>
             </button>
           </div>

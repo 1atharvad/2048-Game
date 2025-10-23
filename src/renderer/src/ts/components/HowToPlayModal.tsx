@@ -12,8 +12,7 @@ export const HowToPlayModal = ({
   includeArrow?: boolean
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
-  const baseUrl = window.isElectronApp ? '' : '/';
-  
+
   useEffect(() => {
     if (modalRef.current instanceof HTMLElement) {
       new PageModal(modalRef.current, () => {
@@ -27,11 +26,11 @@ export const HowToPlayModal = ({
       <button className={`${includeArrow ? 'js-button reverse-' : ''}solid-btn modal-btn instruction-btn`}
           data-modal-id={content.modal_id} data-immediate-close="true">
         <svg role="presentation" aria-hidden="true" className="info-logo">
-          <use xlinkHref={`${baseUrl}images/icons.svg#info`}></use>
+          <use xlinkHref={'images/icons.svg#info'}></use>
         </svg>
         <span className="btn-text">{content.value}</span>
         {includeArrow && <svg role="presentation" aria-hidden="true" className="arrow-right">
-          <use xlinkHref={`${baseUrl}images/icons.svg#chevron-up`}></use>
+          <use xlinkHref={'images/icons.svg#chevron-up'}></use>
         </svg>}
       </button>
       {!skipModal && <div className="instruction-popup page-modal hide-modal" role="modal" aria-modal="true"
@@ -41,8 +40,8 @@ export const HowToPlayModal = ({
             <h3 className="title">{content.modal_content.title}</h3>
             <button className="solid-btn close-btn" title={content.close_btn.title}>
               <svg role="presentation" aria-hidden="true" className="close-logo">
-                <use xlinkHref={`${baseUrl}images/icons.svg#close`}></use>
-              </svg>  
+                <use xlinkHref={'images/icons.svg#close'}></use>
+              </svg>
             </button>
           </div>
           <div className="description">
