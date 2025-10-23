@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   root: 'src/renderer',
-  base: '/',
+  base: '/projects/game-2048',
   plugins: [react()],
   build: {
     outDir: '../../dist/projects/game-2048',
